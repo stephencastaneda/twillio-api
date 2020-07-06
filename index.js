@@ -22,13 +22,8 @@ client.messages
      from: fromNumber,
      to: toNumber
    })
-  .then((message) => {
-    console.log(message.sid);
-  res.sendStatus(200);
-})
-  .catch((err) => {
-    console.log(err);
-    res.sendStatus(500)});
+  .then(() => res.sendStatus(200))
+  .catch(() => res.sendStatus(500));
 });
 
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
