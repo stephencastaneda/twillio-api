@@ -23,22 +23,15 @@ const message = req.body.message;
 
 const client = require('twilio')(accountSid, authToken);
 
+client.messages
+  .create({
+     body: message,
+     from: fromNumber,
+     to: toNumbers
+   })
+  .then(() => res.sendStatus(200))
+  .catch(() => res.sendStatus(500));
+});
 
-toNumbers.forEach(function(number){
-  var newMessage = client.messages.create({
-    body: message,
-    from: fromNumber,
-    to: number
-  })
-  .then(function(newMessage) { 
-    console.log("Successfully sent SMS notication " + (index 
-    + 1) + " -", newMessage.sid);
-  })
-  .catch(error => {
-    console.log("There was an error trying to send an SMS text. ", error.reason)
-  })
-  .done();
-  })
-})
 
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
